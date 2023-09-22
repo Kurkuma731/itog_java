@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Toy {
+    class Toy {
     private int id;
     private String name;
     private int quantity;
@@ -42,6 +43,7 @@ class Toy {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+}
 }
 
 public class ToyStore {
@@ -111,8 +113,9 @@ public class ToyStore {
         toyStore.addToy(3, "Машинка", 8, 25);
 
         Scanner scanner = new Scanner(System.in);
-
-        while (true) {
+        boolean exit = false; // Добавляем условие завершения цикла
+        @SuppressWarnings("InfiniteLoopStatement")
+        while (!exit) {
             System.out.println("1. Добавить игрушку");
             System.out.println("2. Изменить вес игрушки");
             System.out.println("3. Розыгрыш игрушки");
@@ -138,8 +141,7 @@ public class ToyStore {
                     System.out.print("ID игрушки: ");
                     int toyId = scanner.nextInt();
                     System.out.print("Новый вес игрушки (в % от 100): ");
-                    double newWeight = scanner.
-                    nextDouble();
+                    double newWeight = scanner.nextDouble();
 
                     toyStore.updateToyWeight(toyId, newWeight);
                     break;
@@ -147,8 +149,10 @@ public class ToyStore {
                     toyStore.playToyLottery();
                     break;
                 case 4:
+                    exit = true; // Условие завершения цикла
                     scanner.close();
                     System.exit(0);
+                    break;
                 default:
                     System.out.println("Некорректный выбор. Попробуйте еще раз.");
             }
